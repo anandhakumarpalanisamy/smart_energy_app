@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Energy</title>
+<link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="css/app.css">
+
+  
+</head>
+<body>
+<div class="w3-top">
+    <div class="w3-bar w3-large  w3-collapse " style="background-color: white; color: #666;">
+        <button onclick="openLink(event, 'home')" class="w3-bar-item w3-left  w3-hover-opacity" style="padding: 0px; cursor: pointer;background-color:white;color: #666;" title="Home"><img src="images/bityoga.png" height="56" width="200" alt="Avatar" ></button>
+        <a href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+        <a href="#" onclick="document.getElementById('register').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+        <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
+        <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
+        
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-right w3-hover-blue" onclick="myFunction()">&#9776;</a>
+    </div>
+</div>
+<div id="demo" class="w3-sidebar w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-animate-right" style="right:0;">
+    <button onclick="myFunction()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+    <a href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+    <a href="#" onclick="openLink(event, 'register')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+    <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
+    <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
+
+</div>
+
+<div id="home" class="iframe_holder  "  style="background-color:white;">
+  <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+</div>
+
+<div id="sell" class="modal" style="overflow:visible;">
+  
+  <form id="sell_form" action="/sell" enctype="multipart/form-data" method="POST" class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('sell').style.display='none'" class="close" title="Close Modal" style="top: -17px;">&times;</span>
+      <strong><span>Post an Advertisement</span></strong>
+      <!-- <img src="images/avatar2.png" alt="Avatar" class="avatar"> -->
+    </div>
+    <hr>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="car_license_plate"><b>Car_License_Plate</b></label>
+      <input type="text" placeholder="Enter Car_License_Plate" name="car_license_plate" required>
+        
+      <button type="submit">Post</button>
+      <div id="sell_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('sell').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+
+
+
+
+</div>
+
+<div id="buy" class="iframe_holder " style="display: none;"  >
+  <iframe src="consumer.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+</div>
+
+<div id="login" class="modal" style="overflow:visible;" >
+  
+  <form id="login_form" action="/login" enctype="multipart/form-data" method="POST" class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal" style="top: -17px;">&times;</span>
+      <strong><span>Login</span></strong>
+    </div>
+    <hr>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <div id="login_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+
+
+</div>
+
+<div id="register" class="modal" style="overflow:visible;">
+  
+
+
+  <form id="register_form" action="/register" enctype="multipart/form-data" method="POST" class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('register').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="images/avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Register</button>
+      <div id="register_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('register').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+
+  </form>
+
+
+
+  
+
+
+</div>
+
+<div class="footer"  style="background-color: #f8f8f8; color: #666;">
+  <span class="w3-hide-small">Powered by :</span> 
+  <img style = "padding: 5px;" src="images/eu.jpg" height="52"  alt="Avatar" >
+  <img style = "padding: 5px;" src="images/articonf.png" height="52"  alt="Avatar" >
+  <img style = "padding: 5px;"src="images/bityoga2.png" height="52" alt="Avatar" > 
+</div>
+     
+<script type="text/javascript" src="js/double_menu.js"> </script>
+<script type="text/javascript"> 
+  
+    //$("#home").load("home_page.html"); 
+    //$("#login").load("login.html"); 
+  
+  </script>     
+<script type="text/javascript" src="js/modal.js"> </script>
+<script type="text/javascript" src="js/send_ajax_request.js"> </script>
+
+  
+</body>
+</html>

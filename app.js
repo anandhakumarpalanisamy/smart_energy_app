@@ -4,10 +4,10 @@ const formidable = require('express-formidable');
 var bodyParser = require('body-parser');
 
 // import fabric node sdk helper functions
-const enrollAdmin = require('./bityoga_hyperledger_fabric_node_sdk/enrollAdmin');
-const registerUser = require('./bityoga_hyperledger_fabric_node_sdk/registerUser');
-const querychaincode = require('./bityoga_hyperledger_fabric_node_sdk/query');
-const invokechaincode = require('./bityoga_hyperledger_fabric_node_sdk/invoke');
+const enrollAdmin = require('./fabric_node_sdk_helper/enrollAdmin');
+const registerUser = require('./fabric_node_sdk_helper/registerUser');
+const querychaincode = require('./fabric_node_sdk_helper/query');
+const invokechaincode = require('./fabric_node_sdk_helper/invoke');
 
 // Create a express object
 const app = express();

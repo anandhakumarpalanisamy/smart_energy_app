@@ -33,7 +33,7 @@
         
       #### (OR) Manually edit the following two files - no need of ssh permission
         - smart_energy_app/fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
-        - mart_energy_app/fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        - smart_energy_app/fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
          
          
         

@@ -1,5 +1,4 @@
 # Smart Energy Node App
-##  Instructions
 
 # Requirements
   1. Bityoga fabric sdk should be up and running

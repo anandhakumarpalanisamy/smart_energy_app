@@ -16,7 +16,7 @@
           -  nvm use node v8.10.0   (using nvm)
       - **Execute  Command :** npm install
       
-  3. ## Update ip address in 'smart_energy_app/fabric_node_sdk_helper/network_profile.json'
+  3. ## Update fabric ip address in 'smart_energy_app/fabric_node_sdk_helper/network_profile.json'
       - (For other New App Developers) fabric_node_sdk_helper is available in git repository  : https://github.com/anandhakumarpalanisamy/fabric_node_sdk_helper.git 
       - update the url ip addresses of orderer, peer2, orgca, tlsca (4 places).
       - update it with your prime manager's ip address

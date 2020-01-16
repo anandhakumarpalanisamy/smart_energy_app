@@ -23,15 +23,22 @@
       - update it with your prime manager's ip address
       
   4.  ## Retrieve hyperledger fabric tls certificates of 'orderer' and 'peer2'
-      #### (Replace ip address with your fabric prime manager's ip address)
+      #### Through shell script - needs ssh permission
         - cd smart_energy_app/fabric_node_sdk_helper
+        - Replace **IP_ADDRESS="178.62.207.235"** with your fabric prime manager's ip address
         - **Execute  Command :** bash get_tls_certificates.sh
-      #### (OR)
+      #### (OR) Through Manual scp commands - needs ssh permission
         - scp -r root@178.62.207.235:/root/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem .smart_energy_app/fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
-
         - scp -r root@178.62.207.235:/root/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem .smart_energy_app/fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        
+      #### (OR) Manually edit the following two files - no need of ssh permission
+        - smart_energy_app/fabric_node_sdk_helper/hlft-store/orderer/tls-msp/tlscacerts/tls-tlsca-7054.pem
+        - mart_energy_app/fabric_node_sdk_helper/hlft-store/peer2/tls-msp/tlscacerts/tls-tlsca-7054.pem
          
          
         
    5. ## Start App
+        - cd smart_energy_app/
         - **Execute  Command :** node app.js
+        - app will be running in 'localhost' at port 3000
+        - open in browser: http://localhost:3000/ 

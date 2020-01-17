@@ -15,17 +15,18 @@
 </head>
 <body>
 <div class="w3-top">
-    <div class="w3-bar w3-large  w3-collapse " style="background-color: white; color: #666;">
-        <button onclick="openLink(event, 'home')" class="w3-bar-item w3-left  w3-hover-opacity" style="padding: 0px; cursor: pointer;background-color:white;color: #666;" title="Home"><img src="images/bityoga.png" height="56" width="200" alt="Avatar" ></button>
-        <a href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
-        <a href="#" onclick="document.getElementById('register').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
-        <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
-        <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small tablink w3-hover-blue w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
+    <div class="w3-bar w3-large  w3-collapse " style="background-color:#f8f8f8; color: #666;">
+        <button onclick="openLink(event, 'home')" class="w3-bar-item w3-left  w3-hover-opacity" style="padding: 0px; cursor: pointer;color: #666; background-color: #f8f8f8;" title="Home"><img src="images/bityoga4.png" height="56" width="200" alt="Avatar" ></button>
+        <a href="#" onclick="notification_function()" class="w3-bar-item w3-button tablink w3-hover-blue w3-right" ><i class="fa fa-bell" aria-hidden="true"></i> <span class="w3-hide-small w3-hide-medium">Notification(s)</span></a>
+        <a href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+        <a href="#" onclick="document.getElementById('register').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+        <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
+        <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
         
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium w3-right w3-hover-blue" onclick="myFunction()">&#9776;</a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large  w3-right w3-hover-blue" onclick="myFunction()">&#9776;</a>
     </div>
 </div>
-<div id="demo" class="w3-sidebar w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-animate-right" style="right:0;">
+<div id="demo" class="w3-sidebar w3-bar-block w3-white w3-hide w3-hide-large w3-animate-right" style="right:0;">
     <button onclick="myFunction()" class="w3-bar-item w3-button w3-large">Close &times;</button>
     <a href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
     <a href="#" onclick="openLink(event, 'register')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
@@ -33,6 +34,16 @@
     <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
 
 </div>
+
+<div id="notifications" class="w3-sidebar w3-bar-block w3-white w3-hide w3-animate-right" style="right:0;width: 300px;">
+  <button onclick="notification_function()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Notification1</a>
+  <a href="#" onclick="openLink(event, 'register')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-user-plus" aria-hidden="true"></i> Notification2</a>
+  <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Notification3</a>
+  <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Notification4</a>
+
+</div>
+
 
 <div id="home" class="iframe_holder  "  style="background-color:white;">
   <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
@@ -146,10 +157,10 @@
 </div>
 
 <div class="footer"  style="background-color: #f8f8f8; color: #666;">
-  <span class="w3-hide-small">Powered by :</span> 
-  <img style = "padding: 5px;" src="images/eu.jpg" height="52"  alt="Avatar" >
-  <img style = "padding: 5px;" src="images/articonf.png" height="52"  alt="Avatar" >
-  <img style = "padding: 5px;"src="images/bityoga2.png" height="52" alt="Avatar" > 
+  <img class = "w3-left" style = "padding: 5px;margin-left: 5px;" src="images/articonf4.png" height="52"  alt="Avatar" >
+  <img class = "w3-right" style = "padding: 5px;" src="images/eu.png" height="52"  alt="Avatar" >
+  <img class = "w3-right" style = "padding: 5px;"src="images/bityoga5.png" height="52" alt="Avatar" > 
+  <span class="w3-hide-small w3-right" style="margin-top: 16px;">Powered by :</span>
 </div>
      
 <script type="text/javascript" src="js/double_menu.js"> </script>

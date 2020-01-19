@@ -219,7 +219,7 @@
   }
   
   .modal-content {
-      max-height: 80vh;
+      max-height: 70vh;
       overflow: auto;
     }
   
@@ -228,6 +228,9 @@
     .modal-content {
       width: 80%;
     }
+    .iframe_holder {
+	height: calc(100vh - 153px);	
+	}
   }
   
   /* Small devices (portrait tablets and large phones, 600px and up) */

@@ -5,6 +5,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <style>
    div.sticky {
   position: -webkit-sticky;
@@ -43,15 +52,21 @@ html {
     <hr>
     <form action="/action_page.php" target="_blank">
       <p><label><i class="fas fa-user"></i> User</label></p>
-      <input class="w3-input w3-border" type="text" placeholder="User Name" name="user_name" required>          
-      <p><label><i class="fa fa-calendar-check-o"></i> From</label></p>
-      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="from_date" required>          
-      <p><label><i class="fa fa-calendar-o"></i> To</label></p>
-      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="to_date" required>         
+      <input style = "color: #244848;" class="w3-input w3-border" type="text" placeholder="User Name" name="user_name" required>          
+      <p><label><i class="fa fa-calendar-check-o"></i> Period</label></p>
+
+      <!--<input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="from_date" required> -->
+      <div id="datetimepicker_data_tables" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: fit-content; color: #244848;">
+			
+			<span></span> <i class="fa fa-caret-down"></i>
+		</div>
+
+      <!--<p><label><i class="fa fa-calendar-o"></i> To</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="to_date" required> -->        
       <p><label><i class="fab fa-bitcoin"></i> Min Energy Tokens</label></p>
-      <input class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="1" name="min_energy_tokens" min="1">              
+      <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="1" name="min_energy_tokens" min="1">              
       <p><label><i class="fab fa-bitcoin"></i> Max Energy Tokens</label></p>
-      <input class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens" min="1">
+      <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens" min="1">
       <p><button class="w3-button w3-block w3-teal w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> Apply Filter</button></p>
     </form>
   </div>
@@ -170,7 +185,7 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24">
+      <div class="w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -225,7 +240,7 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24">
+      <div class="w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -291,81 +306,7 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24">
-        <div class="w3-twothird w3-container">
-          <div class="w3-container w3-card w3-white w3-round "><br>
-            <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <span class="w3-right w3-opacity"><i class="far fa-clock" aria-hidden="true"></i> 1 min</span>
-            <h4>John Doe</h4><br>
-            <hr class="w3-clear">
-            
-                <p>Energy at affordable price</p>
-               
-            <div class="w3-row-padding" style="margin:0 -16px">
-                <div class="w3-third w3-center w3-right">
-                  <p>
-                    <span><i class="fab fa-bitcoin" aria-hidden="true"></i> Price :</span>
-                    <span>2 per kW</span>
-                  </p>
-                </div>
-                
-                <div class="w3-third w3-center w3-right">
-                  <p>
-                    <span><i class="fas fa-battery-half" aria-hidden="true"></i> Selling :</span>
-                    <span>350 kW</span>
-                  </p>
-                </div>
-
-                <div class="w3-third w3-center w3-right">
-                  <p>
-                    <span><i class="fas fa-charging-station" aria-hidden="true"></i> Source :</span>
-                    <span>Solar Panel <i class='fas fa-solar-panel' aria-hidden="true"></i> </span>
-                  </p>
-                </div>
-                
-            </div><hr class="w3-clear">
-            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like <span>26</span></button> 
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment <span>16</span></button>
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom w3-right w3-teal w3-hover-opacity"><i class="fa fa-shopping-cart"></i> Buy</button>
-          </div>
-        </div>
-        <div class="w3-third w3-container w3-hide-small " style="margin-top: 25px;">
-          <p class="w3-card w3-padding-large w3-padding-32 w3-center w3-animate-right">
-            <img src="/images/profile_rating_icon.png" aria-hidden="true" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-            <span><i class="fas fa-star-half-alt" aria-hidden="true"></i> Seller Rating</span><br>
-            <span><i class="fas fa-tachometer-alt" aria-hidden="true"></i> 86% </span>
-          </p>
-          <p class="w3-card w3-padding-large w3-padding-32 w3-center w3-animate-left">
-            <img src="/images/energy_icon2.png" aria-hidden="true" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;margin-top: -15px;height: 60px;">
-            <span><i class="fas fa-battery-half" aria-hidden="true"></i> Available Power </span><br>
-            <span>1500 Killowatt </span>
-          </p>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div class="w3-row w3-padding-24">
+      <div class="w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -439,7 +380,81 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24">
+      <div class="w3-row w3-padding-24 w3-animate-bottom">
+        <div class="w3-twothird w3-container">
+          <div class="w3-container w3-card w3-white w3-round "><br>
+            <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity"><i class="far fa-clock" aria-hidden="true"></i> 1 min</span>
+            <h4>John Doe</h4><br>
+            <hr class="w3-clear">
+            
+                <p>Energy at affordable price</p>
+               
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-third w3-center w3-right">
+                  <p>
+                    <span><i class="fab fa-bitcoin" aria-hidden="true"></i> Price :</span>
+                    <span>2 per kW</span>
+                  </p>
+                </div>
+                
+                <div class="w3-third w3-center w3-right">
+                  <p>
+                    <span><i class="fas fa-battery-half" aria-hidden="true"></i> Selling :</span>
+                    <span>350 kW</span>
+                  </p>
+                </div>
+
+                <div class="w3-third w3-center w3-right">
+                  <p>
+                    <span><i class="fas fa-charging-station" aria-hidden="true"></i> Source :</span>
+                    <span>Solar Panel <i class='fas fa-solar-panel' aria-hidden="true"></i> </span>
+                  </p>
+                </div>
+                
+            </div><hr class="w3-clear">
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like <span>26</span></button> 
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment <span>16</span></button>
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom w3-right w3-teal w3-hover-opacity"><i class="fa fa-shopping-cart"></i> Buy</button>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-hide-small " style="margin-top: 25px;">
+          <p class="w3-card w3-padding-large w3-padding-32 w3-center w3-animate-right">
+            <img src="/images/profile_rating_icon.png" aria-hidden="true" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span><i class="fas fa-star-half-alt" aria-hidden="true"></i> Seller Rating</span><br>
+            <span><i class="fas fa-tachometer-alt" aria-hidden="true"></i> 86% </span>
+          </p>
+          <p class="w3-card w3-padding-large w3-padding-32 w3-center w3-animate-left">
+            <img src="/images/energy_icon2.png" aria-hidden="true" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px;margin-top: -15px;height: 60px;">
+            <span><i class="fas fa-battery-half" aria-hidden="true"></i> Available Power </span><br>
+            <span>1500 Killowatt </span>
+          </p>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -557,6 +572,56 @@ html {
   }
   </script>
 
+
+<script type="text/javascript">
+	
+
+	function update_datatable_date_range_data(start, end) {
+			//console.log(start,end);
+		    $('#datetimepicker_data_tables span').html(start.format('MMMM D, YYYY HH:mm') + ' - ' + end.format('MMMM D, YYYY HH:mm'));
+
+
+		}
+
+
+	function initialise_data_table_time_handler_functions() {
+
+      var start = moment().subtract(30, 'minutes');
+      var end = moment();
+
+
+        $('#datetimepicker_data_tables').daterangepicker({
+                        showWeekNumbers: true,
+                        showDropdowns: true,
+                        timePicker: true,
+                        timePicker24Hour: true,
+                          startDate: start,
+                          endDate: end,
+                          alwaysShowCalendars: true,
+                          showCustomRangeLabel: true,
+                          autoApply: true,
+                          maxSpan: {
+                                    "days": 6
+                              },
+                        autoUpdateInput:true,
+                          ranges: {
+                             'Today': [moment().startOf('days'), moment().endOf('days')],
+                             'Yesterday': [moment().subtract(1, 'days').startOf('days'), moment().subtract(1, 'days').endOf('days')],
+                             'Last 7 Days': [moment().subtract(6, 'days').startOf('days'), moment().endOf('days')],
+                             'Last 30 Days': [moment().subtract(29, 'days').startOf('days'), moment().endOf('days')],
+                             'This Week': [moment().startOf('week'), moment().endOf('week')],
+                             'Last Week': [moment().subtract(1, 'week').startOf('week'), moment().subtract(1, 'week').endOf('week')],
+                             'This Month': [moment().startOf('month'), moment().endOf('month')],
+                             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                          }
+                      }, update_datatable_date_range_data);
+
+      update_datatable_date_range_data(start, end);
+
+    }
+
+    initialise_data_table_time_handler_functions();
+</script>
 
 
 </body>

@@ -1,3 +1,4 @@
+
 function logout(){
     $.ajax({
         type: "POST",
@@ -6,9 +7,10 @@ function logout(){
         complete: function(data)
             {
                 console.log(data);
-                $("#login_button").removeClass("w3-hide");
-                document.getElementById("welcome_user_span").style.display = "none";
-                document.getElementById("logout_button").style.display = "none";
+                //$("#login_button").removeClass("w3-hide");
+               // document.getElementById("welcome_user_span").style.display = "none";
+                //document.getElementById("logout_button").style.display = "none";
+                window.location.href = "/index.html";
             }
         });
 }
@@ -23,21 +25,101 @@ function check_session(){
                 var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
                 console.log(json);
                 if (json["status"] ==="session active") {
-                    document.getElementById("session_user_name").textContent=json['user_name'];
-                    $("#login_button").addClass("w3-hide");
-                    document.getElementById("welcome_user_span").style.display = "block";
-                    document.getElementById("logout_button").style.display = "block";
+                    //document.getElementById("session_user_name").textContent=json['user_name'];
+                    //document.getElementById("welcome_user_span").style.display = "block";
+                    //document.getElementById("logout_button").style.display = "block";
+                    //document.getElementById('home').style.display = "block";
+
+                    $("#session_user_name").text(json['user_name']);
+                    
+                    $(".login_button").hide();
+                    $(".register_button").hide();
+
+                    $("#welcome_user_span").show();
+                    $(".logout_button").show();
+                    $(".notification_button").show();
+                    $(".buy_button").show();
+                    $(".query_button").show();
+                    $(".invoke_button").show();
+                    
+                    $("#login_check").hide();
+                    $("#register_check").hide();
+                    $("#buy").hide();
+                    $("#home").show();
+                    
+
+
+
                 }
                 else {
-                    document.getElementById("welcome_user_span").style.display = "none";
-                    document.getElementById("logout_button").style.display = "none";
-                    $("#login_button").removeClass("w3-hide");
+                    //document.getElementById("welcome_user_span").style.display = "none";
+                    //document.getElementById("logout_button").style.display = "none";
                     
+                    $(".login_button").show();
+                    $(".register_button").show();
+
+                    $("#welcome_user_span").hide();
+                    $(".logout_button").hide();
+                    $(".notification_button").hide();
+                    $(".buy_button").hide();
+                    $(".query_button").hide();
+                    $(".invoke_button").hide();
+
+                    $("#home").hide();
+                    $("#register_check").hide();
+                    $("#buy").hide();
+                    
+                    
+                    $("#login_check").show();
+
+                    //document.getElementById('login_check').style.display = "block";
                 }
                 
             }
         });
 }
+
+
+
+
+function check_iframe_session(){
+    $.ajax({
+        type: "POST",
+        url: "/",
+        async: true,
+        complete: function(data)
+            {
+                var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
+                console.log(json);
+                if (json["status"] ==="session active") {
+                    //document.getElementById("session_user_name").textContent=json['user_name'];
+                    //$("#login_button").addClass("w3-hide");
+                    //document.getElementById("welcome_user_span").style.display = "block";
+                    //document.getElementById("logout_button").style.display = "block";
+                    //window.location.href = "/home_page.html";
+                    //document.getElementById('home').style.display = "block";
+                    console.log("session active");
+                }
+                else {
+                    
+                   // document.getElementById("welcome_user_span").style.display = "none";
+                    //document.getElementById("logout_button").style.display = "none";
+                   // $("#login_button").removeClass("w3-hide");
+                    //document.getElementById('login_check').style.display = "block";
+                    window.location.href = "/index.html";
+                }
+                
+            }
+        });
+}
+
+
+
+
+
+
+
+
 
 // this is the id of the form
 $("#register_form").submit(function(e) {
@@ -65,7 +147,8 @@ $("#register_form").submit(function(e) {
                     var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
                     alert(json.status);
                     if (json["status"] ==="success") {
-                        document.getElementById("register").style.display = "none";
+                        //document.getElementById("register").style.display = "none";
+                        window.location.href = "/login_check.html";
                     }
                     
                 }
@@ -96,17 +179,15 @@ $("#login_form").submit(function(e) {
                     
                     document.getElementById("login_loader").style.display = "none";  
                     var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
-                    
+                    alert(json['status']);
                     if (json["status"] ==="success") {
-                        document.getElementById("session_user_name").textContent=document.getElementById("Login_User_Name").value;
-                        console.log(json['status']);
-                        $("#login_button").addClass("w3-hide");
-                        document.getElementById("login").style.display = "none";
-                        document.getElementById("welcome_user_span").style.display = "block";
-                        document.getElementById("logout_button").style.display = "block";
-                        alert(json['status']);
-
+                        //console.log(document.getElementById('Login_User_Name').value);
+                        //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
+                        //$(parent.document).find("#welcome_user_span").show();
+                        //$(parent.document).find("#logout_button").show();
+                        window.top.location.href = "/index.html";
                     }
+                    
     
                 }
             });

@@ -48,7 +48,8 @@ async function registerUser(user_name, user_password, user_role) {
                 const enrollment = await ca.enroll({ enrollmentID: user_name, enrollmentSecret: secret });
                 const userIdentity = X509WalletMixin.createIdentity('hlfMSP', enrollment.certificate, enrollment.key.toBytes());
                 await wallet.import(user_name, userIdentity);
-                return_value = 'Successfully registered and enrolled user "'+user_name+'" with role "'+user_role+'" and imported it into the wallet';
+                console.log('Successfully registered and enrolled user "'+user_name+'" with role "'+user_role+'" and imported it into the wallet');
+                return_value = 'Success';
             }
         }
     } 

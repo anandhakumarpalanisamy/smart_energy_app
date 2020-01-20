@@ -17,21 +17,33 @@
 <div class="w3-top">
     <div class="w3-bar w3-large  w3-collapse " style="background-color:#f8f8f8; color: #666;">
         <button onclick="openLink(event, 'home')" class="w3-bar-item w3-left  w3-hover-opacity" style="padding: 0px; cursor: pointer;color: #666; background-color: #f8f8f8;" title="Home"><img src="images/bityoga4.png" height="56" width="200" alt="Avatar" ></button>
+        <span id = "welcome_user_span"  style="width:auto;display: none;" class="w3-bar-item w3-right w3-hide-small" ><i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome, <strong><span id="session_user_name">Anand </span></strong></span>
         <a href="#" onclick="notification_function()" class="w3-bar-item w3-button tablink w3-hover-blue w3-right" ><i class="fa fa-bell" aria-hidden="true"></i> <span class="w3-hide-small w3-hide-medium">Notification(s)</span></a>
-        <a href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+        <!-- <a href="#" class="logout_button" onclick="logout()" style="display: none;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right" ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a> -->
+        <!-- <a class="login_button" href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-hide w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right" ><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a> -->
+
+        <!-- <a class="login_button" href="#" onclick="openLink(event, 'login_check')" class="w3-hide w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Login Check</a> -->
+        <!-- <a href="#" onclick="openLink(event, 'register_check')" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Register Check</a> -->
+        <a id="logout_button" href="#" onclick="logout()" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        <a id="login_button" href="#" onclick="document.getElementById('login').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
         <a href="#" onclick="document.getElementById('register').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
         <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
-        <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
+        <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
+        <a  href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a>
         
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large  w3-right w3-hover-blue" onclick="myFunction()">&#9776;</a>
     </div>
 </div>
 <div id="demo" class="w3-sidebar w3-bar-block w3-white w3-hide w3-hide-large w3-animate-right" style="right:0;">
     <button onclick="myFunction()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-    <a href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+    <a id="logout_button" href="#" onclick="logout()" style="display: none;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+    <a  href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+    <a href="#" onclick="openLink(event, 'login_check')" class="w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Login Check</a>
+    <a href="#" onclick="openLink(event, 'register_check')" class="w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Register Check</a>
     <a href="#" onclick="openLink(event, 'register')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
     <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
-    <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Sell</a>
+    <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
+    <a href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a>
 
 </div>
 
@@ -54,27 +66,27 @@
   <form id="sell_form" action="/sell" enctype="multipart/form-data" method="POST" class="modal-content animate" >
     <div class="imgcontainer">
       <span onclick="document.getElementById('sell').style.display='none'" class="close" title="Close Modal" style="top: -17px;">&times;</span>
-      <strong><span>Post an Advertisement</span></strong>
+      <strong><span>Invoke a Chaincode</span></strong>
       <!-- <img src="images/avatar2.png" alt="Avatar" class="avatar"> -->
     </div>
     <hr>
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="Chain_Code_Name"><b>Chaincode Name</b></label>
+      <input type="text" placeholder="Enter Chaincode Name" name="Chain_Code_Name" id = "Chain_Code_Name" value="carcc" required>
+
+      <label for="Chain_Code_Function_Name"><b>Chain Code Function Name</b></label>
+      <input type="text" placeholder="Enter Password" name="Chain_Code_Function_Name" id ="Chain_Code_Function_Name" value="createCar" required>
 
       <label for="car_license_plate"><b>Car_License_Plate</b></label>
       <input type="text" placeholder="Enter Car_License_Plate" name="car_license_plate" required>
         
-      <button type="submit">Post</button>
       <div id="sell_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+      <button type="submit">Post</button>
+      
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('sell').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
 
@@ -87,6 +99,13 @@
   <iframe src="consumer.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
 
+<div id="login_check" class="iframe_holder " style="display: none;"  >
+  <iframe src="login_check.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+</div>
+<div id="register_check" class="iframe_holder " style="display: none;"  >
+  <iframe src="register_check.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+</div>
+
 <div id="login" class="modal" style="overflow:visible;" >
   
   <form id="login_form" action="/login" enctype="multipart/form-data" method="POST" class="modal-content animate" >
@@ -96,11 +115,11 @@
     </div>
     <hr>
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="Login_User_Name"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="Login_User_Name" id = "Login_User_Name" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="Login_Password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="Login_Password" id ="Login_Password" required>
         
       <button type="submit">Login</button>
       <div id="login_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
@@ -118,6 +137,48 @@
 
 </div>
 
+
+
+
+
+<div id="query_chain_code_div" class="modal" style="overflow:visible;" >
+  
+  <form id="query_chain_code" action="/query_chain_code" enctype="multipart/form-data" method="POST" class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('query_chain_code_div').style.display='none'" class="close" title="Close Modal" style="top: -17px;">&times;</span>
+      <strong><span>Query Chaincode</span></strong>
+    </div>
+    <hr>
+    <div class="container">
+      <label for="Chain_Code_Name"><b>Chaincode Name</b></label>
+      <input type="text" placeholder="Enter Chaincode Name" name="Chain_Code_Name" id = "Chain_Code_Name" value="carcc" required>
+
+      <label for="Chain_Code_Function_Name"><b>Chain Code Function Name</b></label>
+      <input type="text" placeholder="Enter Password" name="Chain_Code_Function_Name" id ="Chain_Code_Function_Name" value="listCars" required>
+      
+      <div id="query_chain_code_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+      <button type="submit">Query</button>
+      
+     
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('query_chain_code_div').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
 <div id="register" class="modal" style="overflow:visible;">
   
 
@@ -129,11 +190,14 @@
     </div>
 
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <label for="User_Name"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id = "User_Name" name="User_Name" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="User_Password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id = "User_Password" name="User_Password" required>
+
+      <label for="User_House_Number"><b>House_Numeber</b></label>
+      <input type="text" placeholder="Enter House Number"  id = "User_House_Number" name="User_House_Number" required>
         
       <button type="submit">Register</button>
       <div id="register_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
@@ -172,7 +236,8 @@
   </script>     
 <script type="text/javascript" src="js/modal.js"> </script>
 <script type="text/javascript" src="js/send_ajax_request.js"> </script>
-
-  
+<script type="text/javascript"> 
+check_session();
+</script> 
 </body>
 </html>

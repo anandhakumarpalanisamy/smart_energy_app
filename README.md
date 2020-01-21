@@ -13,7 +13,7 @@
   2. ## Run npm install
       - cd smart_energy_app/
       - ####  Set node version
-          -  nvm use node v8.10.0   (using nvm)
+          -  nvm use node v11.Updated REAdm0.0   (using nvm)
       - **Execute  Command :** npm install
       
   3. ## Update fabric ip address in 'smart_energy_app/fabric_node_sdk_helper/network_profile.json'

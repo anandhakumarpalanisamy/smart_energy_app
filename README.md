@@ -3,8 +3,8 @@
 # Requirements
   1. Bityoga fabric sdk should be up and running
   2. Node version
-     - Supports node version >=8
-     - Tested with v8.10.0
+     - Supports node version >=v11.0.0
+     - Tested with v11.0.0
 
 # Run Instructions
   1. ## Clone this repository

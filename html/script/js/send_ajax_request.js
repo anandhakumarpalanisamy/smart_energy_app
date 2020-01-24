@@ -15,6 +15,35 @@ function logout(){
         });
 }
 
+
+function get_session_details(){
+
+    $.ajax({
+        type: "POST",
+        url: "/",
+        async: true,
+        complete: function(data)
+            {
+                var json = JSON.parse(data.responseText.replace(/\bNaN\b/g, "null"));
+                console.log(json);
+                if (json["status"] ==="session active") {
+                   
+                    $(".session_user_name").text(json['user_name']);
+                    
+                }
+                else {
+                   
+                    $(".session_user_name").text("Session Expired");
+                }
+                
+            }
+        });
+
+}
+
+
+
+
 function check_session(){
     $.ajax({
         type: "POST",
@@ -30,7 +59,7 @@ function check_session(){
                     //document.getElementById("logout_button").style.display = "block";
                     //document.getElementById('home').style.display = "block";
 
-                    $("#session_user_name").text(json['user_name']);
+                    //$("#session_user_name").text(json['user_name']);
 
                     // console.log($('#my_profile').contents().find('div .session_user_name'));
                     // $('#my_profile').contents().find('.session_user_name').html(json['user_name']);

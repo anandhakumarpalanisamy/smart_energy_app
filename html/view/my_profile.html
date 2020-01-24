@@ -58,43 +58,46 @@ html {
   #graph_updated_timestamp{
     font-size: 3vw;
   }
+  .w3-sidebar{
+    width: 100vw;
+  }
 }
 
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.w3-sidebar::-webkit-scrollbar {
+  display: none;
+}
 
-
-
-
+/* Hide scrollbar for IE and Edge */
 .w3-sidebar {
-  /*height: 100px;
-  width: 50%;
-  margin: 0 auto;*/
-  /*overflow: hidden;*/
-}
-
-.w3-sidebar:hover {
-  overflow-y:auto;
+  -ms-overflow-style: none;
 }
 
 
-::-webkit-scrollbar {
+/* .w3-sidebar:hover {
+  overflow-y:visible;
+}
+
+
+.w3-sidebar::-webkit-scrollbar {
   width: 5px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
+
+.w3-sidebar::-webkit-scrollbar-track {
   background: #f1f1f1; 
 }
  
-/* Handle */
-::-webkit-scrollbar-thumb {
+
+.w3-sidebar::-webkit-scrollbar-thumb {
   background: #888; 
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+
+.w3-sidebar::-webkit-scrollbar-thumb:hover {
   background: #555; 
-}
+} */
 
 .tiles{
   /*background-color: #c2e4ff !important;*/
@@ -106,79 +109,85 @@ html {
 
 <body >
 <button class="w3-hover-opacity" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Top</button>
-<div class="w3-sidebar w3-bar-block  w3-animate-left w3-collapse" style="display:none;left:0;width: 300px; z-index: 3;" id="leftMenu">
+<div class="w3-sidebar w3-bar-block  w3-animate-left w3-collapse" style="display:none;left:0;width: 350px; z-index: 3;" id="leftMenu">
   
   <!-- <button onclick="closeLeftMenu()" class="w3-bar-item w3-button  w3-hide-large">Close &times;</button> -->
 
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-hide-large">Close &times;</button>
   <div class="w3-row">
-  <!-- Left Column -->
-  <div class="">
-    <!-- Profile -->
-    <div class=" w3-round w3-white ">
-      <div class="w3-container">
-       <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> My Profile</h4>
-       <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-       <hr>
-       <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-       <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-       <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+    <!-- Left Column -->
+    <div class="">
+      <!-- Profile -->
+      <div class=" w3-round w3-white ">
+        <div class="w3-container">
+          <div class="w3-card" style="padding: 20px; margin-top: 2vh; margin-left: -2px;" >
+              <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> <span class = "welcome_user_span"  style="width:auto;" > Welcome, <strong><span class="session_user_name">Anand </span></strong></span></h4>
+              <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+              <hr>
+              <p><i class="fas fa-id-card fa-fw w3-margin-right w3-text-theme"></i> User Id : <span class="user_id">23</span></p>
+              <p><i class="fas fa-address-book fa-fw w3-margin-right w3-text-theme"></i> Address : <span class="user_address">4A, Liveien, Stavanger</p>
+        </div>
       </div>
-    </div>
-    <br>
-    <hr>
-
-    <!-- Interests --> 
-    <div class=" w3-round w3-white">
-      <div class="w3-container">
-        <div class="w3-card-4" style="box-shadow: none !important;min-height: 300px;padding: 3px;" >
-          <div style="width: 100%;" class="w3-border">
-
-                <header class="w3-container ">
-                    
-                    <div class="w3-row" style="padding-top: 2vh;color: #244848;">
-                          <strong class="w3-left">Your Selling Price</strong>
-                          
-                    </div>
-
-                    <hr>
-                  </header>
-
-
-                  <div class="w3-container">
-                    <p><label><i class="fas fa-pencil-alt"></i> Post Text</label></p>
-                    <textarea class="post_editable_fields" id="post_text" rows="4"  style = "color: #244848; width: 100%;"  placeholder="Your Advertisement Text ...."></textarea>
-                    <p><label> <i class="fab fa-bitcoin"></i> Price per Kilowatt : </label>  <input class="post_editable_fields" style = "color: #244848; width: 100px;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens"> </p>
-                  
-                  
-
-                      <p style="width: 100%;">
-                        
-                        <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit Price</button>
-                        <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel Edit </button>
-                        <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update Price</button>
-                      </p><br><br>
-
+      </div>
+      <br>
+      
+  
+      <!-- Interests --> 
+      <div class=" w3-round w3-white">
+        <div class="w3-container">
+          <div  style="box-shadow: none !important;min-height: 300px;padding: 3px;" >
+            <div style="width: 101%;margin-left: -2px;" class="w3-card">
+  
+                  <header class="w3-container ">
+                      
+                      <div class="w3-row" style="padding-top: 2vh;color: #244848;">
+                            <strong class="w3-left">Your Selling Price</strong>
+                            
+                      </div>
+  
                       <hr>
-                  </div>
-                  
-                  <footer class="w3-container "  style="color: #244848;">
-                    <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
-                  </footer>
-
-        
-              </div>
-
-          </div>
+                    </header>
+  
+  
+                    <div class="w3-container">
+                      <p><label><i class="fas fa-pencil-alt"></i> Post Text</label></p>
+                      <textarea class="post_editable_fields" id="post_text" rows="4"  style = "color: #244848; width: 100%;"  placeholder="Your Advertisement Text ...."></textarea>
+                      <p><label> <i class="fab fa-bitcoin"></i> Price (per KW): </label>  <input class="post_editable_fields" style = "color: #244848; width: 100px;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens"> </p>
+                      <p>
+                          (<label class="w3-center"> <i class="fas fa-chart-line"></i> Price Comparison: </label> 
+                          <label class="w3-right"><span class="prime_comparison_span"> 20% </span><label> <i class="fas fa-angle-double-down"></i> </label> </label>)
+                      </p>
+                      
+                       
+                    
+  
+                        <p style="width: 100%;">
+                          
+                          <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit</button>
+                          <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel </button>
+                          <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update </button>
+                        </p><br><br>
+  
+                        <hr>
+                    </div>
+                    
+                    <footer class="w3-container "  style="color: #244848;">
+                      <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;"> </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
+                    </footer>
+  
+          
+                </div>
+  
+            </div>
+        </div>
       </div>
+      <br>
+      
+   
+    <!-- End Left Column -->
     </div>
-    <br>
-    
- 
-  <!-- End Left Column -->
+  
   </div>
-
-</div>
 
 </div>
 
@@ -195,12 +204,51 @@ html {
     <div class=" w3-round w3-white ">
       <div class="w3-container">
         <div class="w3-card" style="padding: 20px; margin-top: 2vh; margin-left: -10px;" >
-            <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> <span class = "welcome_user_span"  style="width:auto;" > Welcome, <strong><span class="session_user_name">Anand </span></strong></span></h4>
-            <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-            <hr>
-            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+          
+
+          <div  style="box-shadow: none !important;padding: 3px;" >
+            <div style="width: 105%;margin-left: -15px;" >
+  
+                  <header class="w3-container ">
+                      
+                      <div class="w3-row" style="padding-top: 2vh;color: #244848;">
+                            <strong class="w3-left">Personal Reserved Power Settings</strong>
+                            
+                      </div>
+  
+                      <hr>
+                    </header>
+  
+  
+                    <div class="w3-container">
+                    
+                      <p><label class="w3-center"> <i class="fab fa-bitcoin"></i> Power (KW) : </label>  <input class="post_editable_fields w3-right" style = "color: #244848; width: 80px;" class="w3-input w3-border" type="number" placeholder="Reserve Energy For Personal Use" value="1" name="max_energy_tokens"> </p>
+                      
+                      <p><label class="w3-center"> <i class="fab fa-bitcoin"></i> Min Threshold (KW) : </label>  <input class="post_editable_fields w3-right" style = "color: #244848; width: 80px;" class="w3-input w3-border" type="number" placeholder="Reserve Energy For Personal Use" value="1" name="max_energy_tokens"> </p>
+                    
+  
+                        <p style="width: 100%;">
+                          
+                          <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit</button>
+                          <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel</button>
+                          <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update</button>
+                        </p><br><br>
+  
+                        <hr>
+                    </div>
+                    
+                    <!-- <footer class="w3-container "  style="color: #244848;">
+                      <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
+                    </footer> -->
+  
+          
+                </div>
+  
+            </div>
+
+
+
+
       </div>
     </div>
     </div>
@@ -210,13 +258,13 @@ html {
     <!-- Interests --> 
     <div class=" w3-round w3-white">
       <div class="w3-container">
-        <div  style="box-shadow: none !important;min-height: 300px;padding: 3px;" >
+        <div  style="box-shadow: none !important;padding: 3px;" >
           <div style="width: 105%;margin-left: -15px;" class="w3-card">
 
                 <header class="w3-container ">
                     
                     <div class="w3-row" style="padding-top: 2vh;color: #244848;">
-                          <strong class="w3-left">Your Selling Price</strong>
+                          <strong class="w3-left">Your Energy Source(s)</strong>
                           
                     </div>
 
@@ -225,25 +273,20 @@ html {
 
 
                   <div class="w3-container">
-                    <p><label><i class="fas fa-pencil-alt"></i> Post Text</label></p>
-                    <textarea class="post_editable_fields" id="post_text" rows="4"  style = "color: #244848; width: 100%;"  placeholder="Your Advertisement Text ...."></textarea>
-                    <p><label> <i class="fab fa-bitcoin"></i> Price (per KW): </label>  <input class="post_editable_fields" style = "color: #244848; width: 100px;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens"> </p>
-                  
-                  
-
-                      <p style="width: 100%;">
-                        
-                        <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit Price</button>
-                        <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel Edit </button>
-                        <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update Price</button>
-                      </p><br><br>
-
+                    <p><label><i class="fas fa-solar-panel"></i> Solar Panel</label></p>
+                    <p><label><i class="fas fa-fan"></i> Windmill</label></p>
+                    <p style="width: 100%;">
+                          
+                      <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit</button>
+                      <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel</button>
+                      <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update</button>
+                    </p><br>
                       <hr>
                   </div>
                   
-                  <footer class="w3-container "  style="color: #244848;">
+                  <!-- <footer class="w3-container "  style="color: #244848;">
                     <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
-                  </footer>
+                  </footer> -->
 
         
               </div>
@@ -252,6 +295,49 @@ html {
       </div>
     </div>
     <br>
+
+
+
+    <div class=" w3-round w3-white">
+      <div class="w3-container">
+        <div  style="box-shadow: none !important;padding: 3px;" >
+          <div style="width: 105%;margin-left: -15px;" class="w3-card">
+
+                <header class="w3-container ">
+                    
+                    <div class="w3-row" style="padding-top: 2vh;color: #244848;">
+                          <strong class="w3-left">Your Energy Source(s)</strong>
+                          
+                    </div>
+
+                    <hr>
+                  </header>
+
+
+                  <div class="w3-container">
+                    <p><label><i class="fas fa-solar-panel"></i> Solar Panel</label></p>
+                    <p><label><i class="fas fa-fan"></i> Windmill</label></p>
+                    <p style="width: 100%;">
+                          
+                      <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit</button>
+                      <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel</button>
+                      <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update</button>
+                    </p><br>
+                      <hr>
+                  </div>
+                  
+                  <!-- <footer class="w3-container "  style="color: #244848;">
+                    <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
+                  </footer> -->
+
+        
+              </div>
+
+          </div>
+      </div>
+    </div>
+    <br>
+
     
  
   <!-- End Left Column -->
@@ -263,7 +349,7 @@ html {
 
 </div>
 
-<div class="w3-main w3-animate-opacity" style="margin-left: 300px; margin-right: 350px;">
+<div class="w3-main w3-animate-opacity" style="margin-left: 350px; margin-right: 350px;">
     <div class="sticky w3-hide-large" style="color: #fff!important; background-color: #305342!important;z-index: 2;">
         <button class="w3-button  w3-large w3-left  w3-hide-large" onclick="openLeftMenu()"><i class="fa fa-filter" aria-hidden="true"></i> Filters</button>
         <button class="w3-button  w3-large w3-right w3-hide-large" onclick="openRightMenu()"><i class="fas fa-user-circle" aria-hidden="true"> My Profile</i></button>
@@ -282,7 +368,7 @@ html {
             
               <div class="w3-quarter w3-margin-bottom" style="padding-left:3px;">
                 <div class="w3-container tiles w3-card" >
-                  <div class="w3-left"><i class="fa fa-eye  w3-xxxlarge"></i></div>
+                  <div class="w3-left"><img src="images/sold.png" style="width: 50px;height: 50px;" alt="Avatar" ></div>
                   <div class="w3-right">
                     <h4>530 KW</h4>
                   </div>
@@ -292,7 +378,7 @@ html {
               </div>
               <div class="w3-quarter w3-margin-bottom" style="padding-left:3px;">
                 <div class="w3-container tiles w3-card" >
-                  <div class="w3-left"><i class="fa fa-eye  w3-xxxlarge"></i></div>
+                  <div class="w3-left"><i class="fas fa-shopping-cart  w3-xxxlarge"></i></div>
                   <div class="w3-right">
                     <h4>30 KW</h4>
                   </div>
@@ -592,6 +678,7 @@ html {
       if ( window.location !== window.parent.location ) {
           // The page is in an iframe
           console.log("in iframe");
+          get_session_details();
         } 
         
       else {
@@ -681,6 +768,7 @@ html {
                                 
                                 Plotly.extendTraces('smart_meter_chart_div', update, [0,1]);
                                 $('#graph_updated_timestamp').text(time);
+                                $('#price_updated_timestamp').text(time.toString().slice(0, -41));
                                 if(cnt === 100) clearInterval(interval);
                               }, 1000);
 

@@ -119,6 +119,10 @@ app.post('/',async (req,res) => {
       
   });
 
+
+
+
+  
 app.post('/logout', async (req, res) =>  {
     app_session = req.session;
     app_session.destroy((err) => {

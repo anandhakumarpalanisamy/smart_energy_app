@@ -21,7 +21,7 @@
         <span id = "welcome_user_span"  style="width:auto;display: none;" class="w3-bar-item w3-right w3-hide-small" ><i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome, <strong><span id="session_user_name">Anand </span></strong></span>
         <a  style = "display: none;" href="#" onclick="notification_function()" class="notification_button w3-bar-item w3-button tablink w3-hover-blue w3-right" ><i class="fa fa-bell" aria-hidden="true"></i> <span class="w3-hide-small w3-hide-medium">Notification(s)</span></a>
        
-
+        <a  href="#" onclick="openLink(event, 'my_profile')" style = "display: none;" class="my_profile_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-sign-in" aria-hidden="true"></i> My Profile</a>
         <a  href="#" onclick="openLink(event, 'login_check')" style = "display: none;" class="login_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
         <a  href="#" onclick="openLink(event, 'register_check')" style = "display: none;"  class="register_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a> 
         <a  href="#" onclick="logout()" style="width:auto;display: none;" class="logout_button w3-bar-item w3-button w3-hide-small w3-hide-medium tablink w3-hover-blue w3-right"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
@@ -35,8 +35,9 @@
 <div id="demo" class="w3-sidebar w3-bar-block w3-white w3-hide w3-hide-large w3-animate-right" style="right:0;">
     <button onclick="myFunction()" class="w3-bar-item w3-button w3-large">Close &times;</button>
     <a  href="#" onclick="logout()" style="display: none;" class="logout_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-    <a href="#" onclick="openLink(event, 'login_check')" style = "display: none;" class="login_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Login</a>
-    <a href="#" onclick="openLink(event, 'register_check')" style = "display: none;" class="register_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Register</a>
+    <a href="#" onclick="openLink(event, 'my_profile')" style = "display: none;" class="my_profile_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-shopping-cart" aria-hidden="true"></i> My Profile</a>
+    <a href="#" onclick="openLink(event, 'login_check')" style = "display: none;" class="login_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+    <a href="#" onclick="openLink(event, 'register_check')" style = "display: none;" class="register_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
     <a href="#" onclick="openLink(event, 'buy')" style = "display: none;" class="buy_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
     <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;display: none;" class="invoke_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
     <a  href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto; display: none;" class="query_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a>
@@ -56,6 +57,11 @@
 <div id="home" class="iframe_holder  "  style="background-color:white;display: none;">
   <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
+
+<div id="my_profile" class="iframe_holder  "  style="background-color:white;display: none;">
+  <iframe src="my_profile.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+</div>
+
 
 <div id="sell" class="modal" style="overflow:visible;">
   
@@ -92,10 +98,10 @@
 </div>
 
 <div id="buy" class="iframe_holder " style="display: none;"  >
-  <iframe src="consumer.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+  <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
 
-<div id="login_check" class="iframe_holder " >
+<div id="login_check" class="iframe_holder " style="display: none;" >
   <iframe src="login_check.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
 <div id="register_check" class="iframe_holder " style="display: none;"  >

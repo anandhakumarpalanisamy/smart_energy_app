@@ -10,7 +10,7 @@ function logout(){
                 //$("#login_button").removeClass("w3-hide");
                // document.getElementById("welcome_user_span").style.display = "none";
                 //document.getElementById("logout_button").style.display = "none";
-                window.location.href = "/index.html";
+                window.location.href = "/";
             }
         });
 }
@@ -31,6 +31,12 @@ function check_session(){
                     //document.getElementById('home').style.display = "block";
 
                     $("#session_user_name").text(json['user_name']);
+
+                    // console.log($('#my_profile').contents().find('div .session_user_name'));
+                    // $('#my_profile').contents().find('.session_user_name').html(json['user_name']);
+
+                    
+                    //$(".session_user_name").text(json['user_name']);
                     
                     $(".login_button").hide();
                     $(".register_button").hide();
@@ -41,13 +47,15 @@ function check_session(){
                     $(".buy_button").show();
                     $(".query_button").show();
                     $(".invoke_button").show();
+                    $(".my_profile_button").show();
                     
                     $("#login_check").hide();
                     $("#register_check").hide();
                     $("#buy").hide();
-                    $("#home").show();
+                    $("#my_profile").show();
                     
-
+                    
+                    
 
 
                 }
@@ -64,8 +72,9 @@ function check_session(){
                     $(".buy_button").hide();
                     $(".query_button").hide();
                     $(".invoke_button").hide();
+                    $(".my_profile_button").hide();
 
-                    $("#home").hide();
+                    $("#my_profile").hide();
                     $("#register_check").hide();
                     $("#buy").hide();
                     
@@ -99,6 +108,7 @@ function check_iframe_session(){
                     //window.location.href = "/home_page.html";
                     //document.getElementById('home').style.display = "block";
                     console.log("session active");
+                    $(".session_user_name").text(json['user_name']);
                 }
                 else {
                     
@@ -106,7 +116,7 @@ function check_iframe_session(){
                     //document.getElementById("logout_button").style.display = "none";
                    // $("#login_button").removeClass("w3-hide");
                     //document.getElementById('login_check').style.display = "block";
-                    window.location.href = "/index.html";
+                    window.location.href = "/";
                 }
                 
             }
@@ -185,7 +195,7 @@ $("#login_form").submit(function(e) {
                         //$(parent.document).find("#session_user_name").text(document.getElementById("Login_User_Name").value);
                         //$(parent.document).find("#welcome_user_span").show();
                         //$(parent.document).find("#logout_button").show();
-                        window.top.location.href = "/index.html";
+                        window.top.location.href = "/";
                     }
                     
     

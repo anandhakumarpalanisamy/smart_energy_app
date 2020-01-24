@@ -3,8 +3,8 @@
 # Requirements
   1. Bityoga fabric sdk should be up and running
   2. Node version
-     - Supports node version >=8
-     - Tested with v8.10.0
+     - Supports node version >=v11.0.0
+     - Tested with v11.0.0
 
 # Run Instructions
   1. ## Clone this repository
@@ -13,7 +13,7 @@
   2. ## Run npm install
       - cd smart_energy_app/
       - ####  Set node version
-          -  nvm use node v8.10.0   (using nvm)
+          -  nvm use node v11.Updated REAdm0.0   (using nvm)
       - **Execute  Command :** npm install
       
   3. ## Update fabric ip address in 'smart_energy_app/fabric_node_sdk_helper/network_profile.json'

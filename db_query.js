@@ -124,9 +124,41 @@ async function check_login_and_load_certificates(user_name,user_password) {
 // }
 // check_login();
 
+async function db_query(let_sql_query) {
+    let status ;
+    try {
+        console.log("1");
+        let db_con = await sqlite3_async.open(db_name);
+        //let let_sql_query = 'SELECT * FROM '+table_name+';';
+        console.log(let_sql_query);
+        const result = await db_con.all(let_sql_query);
+        await db_con.close();
+        console.log(result.length);
+        console.log("2");
+        status =  result;
+    }
+    catch(e){
+        console.log(e);
+        status = e;
+    }
+    finally {
+        console.log("5");
+        return status;
+    }
+
+}
+
+
+
+
+
+
+
+
 
 
 module.exports = { 
     sqlite_json_insert : sqlite_json_insert ,
-    check_login_and_load_certificates : check_login_and_load_certificates
+    check_login_and_load_certificates : check_login_and_load_certificates,
+    db_query:db_query
 };

@@ -12,6 +12,8 @@ const invokechaincode = require('./fabric_node_sdk_helper/invoke');
 const {load_certificates_from_wallet} = require('./fileread');
 const {sqlite_json_insert} = require('./db_query');
 const {check_login_and_load_certificates} = require('./db_query');
+const {db_query} = require('./db_query');
+
 
 // Create a express object
 const app = express();
@@ -168,6 +170,41 @@ app.post('/login', async (req, res) =>  {
   });
 
 
+app.post('/ad_submit', async (req, res) =>  {
+
+    
+    let response;
+    if(app_session.user_name && app_session.password) {
+      
+      let user_name = app_session.user_name;
+  
+      let html_json_data = req.body;
+      // let post_timestamp = html_json_data["Posted_Timestamp"];
+      // let energy_to_sell = html_json_data["Energy_To_Sell"];
+      // let cost = html_json_data["Cost"];
+      let session_info = {
+                            "User_Id" : 83
+                          };
+      let combined_user_data = {...html_json_data,...session_info};
+      let insert_status = await sqlite_json_insert(combined_user_data,"Advertisement");
+      
+      response = {
+                      "status":"success",
+                      "data":insert_status
+                };
+    }
+    else {
+          response = {
+                      "status":"Failed",
+                      "data":"Session Expired - Please Login"
+                    };
+    }
+
+    
+    console.log(response);
+    res.json(response);
+  });
+
 app.post('/sell', async (req, res) =>  {
     let response;
     let car_license_plate = req.body.car_license_plate;
@@ -223,6 +260,33 @@ app.post('/query_chain_code', async (req, res) =>  {
       response = {
                       "status":"success",
                       "data":query_result
+                };
+    }
+    else {
+          response = {
+                      "status":"Failed",
+                      "data":"Session Expired - Please Login"
+                    };
+    }
+
+    
+    console.log(response);
+    res.json(response);
+  });
+
+
+  app.post('/buy_ad_loader', async (req, res) =>  {
+    let response;
+    
+    if(app_session.user_name && app_session.password) {
+      
+     
+      let sql_query = "SELECT Advertisement.*, User.User_Name, User.User_Image,User.User_Profile_Rating,User.Accumulated_Generated_Power  FROM Advertisement JOIN User USING(User_Id)";
+      let db_query_result = await db_query(sql_query);
+      
+      response = {
+                      "status":"success",
+                      "data":db_query_result
                 };
     }
     else {

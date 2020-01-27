@@ -47,30 +47,43 @@ html {
 <div class="w3-sidebar w3-bar-block  w3-animate-left w3-collapse" style="display:none;left:0;width: 300px; z-index: 3;" id="leftMenu">
   <!-- <button onclick="closeLeftMenu()" class="w3-bar-item w3-button  w3-hide-large">Close &times;</button> -->
   
-  <div class="w3-container w3-display-container w3-padding-16">
-    <i onclick="closeLeftMenu()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
-    <h3> <i class="fa fa-filter" aria-hidden="true"></i> Filters</h3>
-    <hr>
-    <form action="/action_page.php" target="_blank">
-      <p><label><i class="fas fa-user"></i> User</label></p>
-      <input style = "color: #244848;" class="w3-input w3-border" type="text" placeholder="User Name" name="user_name" required>          
-      <p><label><i class="fa fa-calendar-check-o"></i> Period</label></p>
+  <div class="w3-container w3-display-container w3-padding-16 ">
+    <div >
+      <i onclick="closeLeftMenu()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
 
-      <!--<input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="from_date" required> -->
-      <div id="datetimepicker_data_tables" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: fit-content; color: #244848;">
-			
-			<span></span> <i class="fa fa-caret-down"></i>
-		</div>
+      <h3> <i class="fa fa-filter" aria-hidden="true"></i> Filters</h3>
+      <hr>
+      <form action="/action_page.php" target="_blank">
+        <p><label><i class="fas fa-user"></i> User</label></p>
+        <input style = "color: #244848;" class="w3-input w3-border" type="text" placeholder="User Name" name="user_name" required>          
+        <p><label><i class="fa fa-calendar-check-o"></i> Period</label></p>
 
-      <!--<p><label><i class="fa fa-calendar-o"></i> To</label></p>
-      <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="to_date" required> -->        
-      <p><label><i class="fab fa-bitcoin"></i> Min Energy Tokens</label></p>
-      <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="1" name="min_energy_tokens" min="1">              
-      <p><label><i class="fab fa-bitcoin"></i> Max Energy Tokens</label></p>
-      <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens" min="1">
-      <p><button class="w3-button w3-block w3-teal w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> Apply Filter</button></p>
-    </form>
+        <!--<input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="from_date" required> -->
+        <div id="datetimepicker_data_tables" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: fit-content; color: #244848;">
+        
+        <span></span> <i class="fa fa-caret-down"></i>
+      </div>
+
+        <!--<p><label><i class="fa fa-calendar-o"></i> To</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="to_date" required> -->        
+        <p><label><i class="fab fa-bitcoin"></i> Min Energy Tokens</label></p>
+        <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="0" name="min_energy_tokens" min="0">              
+        <p><label><i class="fab fa-bitcoin"></i> Max Energy Tokens</label></p>
+
+        <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="0" name="capacity" min="0">              
+        <p><label><i class="fas fa-charging-station"></i> Capacity</label></p>
+
+
+        <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Min Energy Tokens" value="0" name="selling" min="0">              
+        <p><label><i class="fas fa-battery-half"></i> Selling</label></p>
+
+        <input style = "color: #244848;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="0" name="max_energy_tokens" min="0">
+        <p><button class="w3-button w3-block w3-teal w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> Apply Filter</button></p>
+      </form>
+    </div>
   </div>
+
+
   
 
 
@@ -86,84 +99,126 @@ html {
     <!-- Profile -->
     <div class=" w3-round w3-white">
       <div class="w3-container">
-       <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> My Profile</h4>
-       <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-       <hr>
-       <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-       <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-       <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+        <div class="w3-card" style="padding: 20px; margin-top: 2vh; margin-left: -2px;" >
+          <h4 class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:50px;width:50px" alt="Avatar"> <span class = "welcome_user_span"  style="width:auto;" ><strong><span class="session_user_name">Anand </span></strong></span></h4>
+          <!-- <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:50px;width:50px" alt="Avatar"></p> -->
+          <hr>
+          
+          <p><i class="fas fa-coins fa-fw w3-margin-right w3-text-theme"></i>Balance : <span class="user_id">23</span></p>
+          <p style="width: 100%;">
+                          
+            <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Refill</button>
+    
+          </p><br> <br>
+
+          <hr>
+
+           <footer class="w3-container "  style="color: #244848;">
+                      <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;"></strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;">Fri Jan 24 2020 19:25:15</span></h5>
+                    </footer> 
       </div>
-    </div>
-    <br>
-    <hr>
-    <!-- Accordion -->
-    <div class=" w3-round">
-      <div class="w3-white">
-        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-        <div id="Demo1" class="w3-hide w3-container">
-          <p>Some text..</p>
-        </div>
-        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-        <div id="Demo2" class="w3-hide w3-container">
-          <p>Some other text..</p>
-        </div>
-        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-        <div id="Demo3" class="w3-hide w3-container">
-       <div class="w3-row-padding">
-       <br>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-         <div class="w3-half">
-           <img src="/images/avatar3.png" style="width:100%" class="w3-margin-bottom">
-         </div>
-       </div>
-        </div>
-      </div>      
-    </div>
-    <br>
-    <hr>
-    <!-- Interests --> 
-    <div class=" w3-round w3-white w3-hide-small">
-      <div class="w3-container">
-        <p>Interests</p>
-        <p>
-          <span class="w3-tag w3-small w3-theme-d5">News</span>
-          <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-          <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-          <span class="w3-tag w3-small w3-theme-d2">Games</span>
-          <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-          <span class="w3-tag w3-small w3-theme">Games</span>
-          <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-          <span class="w3-tag w3-small w3-theme-l2">Food</span>
-          <span class="w3-tag w3-small w3-theme-l3">Design</span>
-          <span class="w3-tag w3-small w3-theme-l4">Art</span>
-          <span class="w3-tag w3-small w3-theme-l5">Photos</span>
-        </p>
       </div>
     </div>
     <br>
     
-    <!-- Alert Box -->
-    <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-      <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
-        <i class="fa fa-remove"></i>
-      </span>
-      <p><strong>Hey!</strong></p>
-      <p>People are looking at your profile. Find out who.</p>
+    <!-- Interests --> 
+    <div class=" w3-round w3-white w3-hide-small">
+      <div class="w3-container">
+        
+
+        <div class="w3-card" style="" >
+          
+
+          <div  style="box-shadow: none !important;padding: 3px;" >
+            <div style="" >
+  
+                  <header class="w3-container ">
+                      
+                      <div class="w3-row w3-center" style="padding-top: 2vh;color: #244848;">
+                            <strong class="w3-center"><i class="fas fa-chart-pie"></i> Average Selling Price</strong>
+                            
+                      </div>
+  
+                      <hr>
+                    </header>
+  
+  
+                    <div class="w3-container">
+                    
+                      <p class="w3-center"><label >Price / KW : </label> <span > 6 <i class="fas fa-coins"></i></span></p>
+ 
+                        <hr>
+                    </div>
+                    
+                    <!-- <footer class="w3-container "  style="color: #244848;">
+                      <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
+                    </footer> -->
+  
+          
+                    </div>
+      
+                </div>
+
+
+
+
+            </div>
+
+
+      </div>
     </div>
+    <br>
+    
+
+     <!-- Interests --> 
+     <div class=" w3-round w3-white w3-hide-small">
+      <div class="w3-container">
+        
+
+        <div class="w3-card" style="" >
+          
+
+          <div  style="box-shadow: none !important;padding: 3px;" >
+            <div style="" >
+  
+                  <header class="w3-container ">
+                      
+                      <div class="w3-row w3-center" style="padding-top: 2vh;color: #244848;">
+                            <strong class="w3-center"><i class="fas fa-chart-pie"></i> Average Buying Price</strong>
+                            
+                      </div>
+  
+                      <hr>
+                    </header>
+  
+  
+                    <div class="w3-container">
+                    
+                      <p class="w3-center"><label >Price / KW : </label> <span > 5 <i class="fas fa-coins"></i></span></p>
+ 
+                        <hr>
+                    </div>
+                    
+                    <!-- <footer class="w3-container "  style="color: #244848;">
+                      <h5 class="w3-right"><i class="fas fa-clock"></i> <strong style="font-size: 15px;">Last Updated : </strong><span  id="price_updated_timestamp" style="font-size: 13px;color: #244848;"></span></h5>
+                    </footer> -->
+  
+          
+                    </div>
+      
+                </div>
+
+
+
+
+            </div>
+
+
+      </div>
+    </div>
+    <br>
+
+    
   
   <!-- End Left Column -->
   </div>
@@ -187,7 +242,7 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/rus.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -258,7 +313,7 @@ html {
 
 
 
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/chum.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -318,7 +373,7 @@ html {
       </div>
     
 
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/long.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -378,7 +433,7 @@ html {
       </div>
     
     
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anto.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -438,7 +493,7 @@ html {
       </div>
     
 
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/magnus.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -499,7 +554,7 @@ html {
     
 
 
-      <div class="w3-row w3-padding-24 w3-animate-bottom">
+      <div class="add_container w3-row w3-padding-24 w3-animate-bottom">
         <div class="w3-twothird w3-container">
           <div class="w3-container w3-card w3-white w3-round "><br>
             <img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
@@ -740,6 +795,7 @@ html {
 if ( window.location !== window.parent.location ) {
   // The page is in an iframe
   console.log("in iframe");
+  get_session_details();
 } else {
   // The page is not in an iframe
   console.log("out iframe");
@@ -747,5 +803,8 @@ if ( window.location !== window.parent.location ) {
 }
 </script> 
 
+<script type="text/javascript"> 
+    get_advertisements();
+</script>
 </body>
 </html>

@@ -105,6 +105,37 @@ html {
   padding: 2vw;
 }
 
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
     </style>
 
 <body >
@@ -121,7 +152,7 @@ html {
       <div class=" w3-round w3-white ">
         <div class="w3-container">
           <div class="w3-card" style="padding: 20px; margin-top: 2vh; margin-left: -2px;" >
-              <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> <span class = "welcome_user_span"  style="width:auto;" > Welcome, <strong><span class="session_user_name">Anand </span></strong></span></h4>
+              <h4 class="w3-center"><i class="fas fa-user-circle" aria-hidden="true"></i> <span class = "welcome_user_span"  style="width:auto;" > Hi, <strong><span class="session_user_name">Anand </span></strong></span></h4>
               <p class="w3-center"><img src="/images/anand.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
               <hr>
               <p><i class="fas fa-id-card fa-fw w3-margin-right w3-text-theme"></i> User Id : <span class="user_id">23</span></p>
@@ -151,16 +182,16 @@ html {
   
                     <div class="w3-container">
                       <p><label><i class="fas fa-pencil-alt"></i> Post Text :</label></p>
-                      <textarea class="post_editable_fields" id="post_text" rows="4"  style = "color: #244848; width: 100%;"  placeholder="Your Advertisement Text ...."></textarea>
-                      <p><label> <i class="fab fa-bitcoin"></i> Price (per KW): </label>  <input class="post_editable_fields" style = "color: #244848; width: 100px;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens"> </p>
+                      <textarea id = "advertisement_text" class="post_editable_fields" id="post_text" rows="4"  style = "color: #244848; width: 100%;"  placeholder="Your Advertisement Text ...."></textarea>
+                      <p><label> <i class="fab fa-bitcoin"></i> Price (per KW): </label>  <input id= "energy_cost" class="post_editable_fields" style = "color: #244848; width: 100px;" class="w3-input w3-border" type="number" placeholder="Max Energy Tokens" value="1" name="max_energy_tokens"> </p>
                       
                       
                        
                     
-  
+
                         <p style="width: 100%;">
-                          
-                          <button style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Edit</button>
+                          <div id="ad_loader" class="loader w3-center" style="display: none; width: 50px;height: 50px;margin-left: 45%;margin-right: 45%;"></div>
+                          <button id ="ad_submit" style="width: max-content;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Submit</button>
                           <button style="width: max-content; display: none;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Cancel </button>
                           <button style="width: max-content; display: none;;" class="w3-right w3-button w3-block w3-teal " type="submit"><i class="fas fa-pencil-alt w3-margin-right"></i> Update </button>
                         </p><br><br>
@@ -219,7 +250,7 @@ html {
                   <header class="w3-container ">
                       
                       <div class="w3-row w3-center" style="padding-top: 2vh;color: #244848;">
-                            <strong class="w3-center">Personal Reserved Power Settings</strong>
+                            <strong class="w3-center"><i class="fas fa-battery-half" aria-hidden="true"></i> Power Backup Settings</strong>
                             
                       </div>
   
@@ -229,7 +260,7 @@ html {
   
                     <div class="w3-container">
                     
-                      <p><label class="w3-center"> <i class="fab fa-bitcoin"></i> Power (KW) : </label>  <input class="post_editable_fields w3-right" style = "color: #244848; width: 80px;" class="w3-input w3-border" type="number" placeholder="Reserve Energy For Personal Use" value="1" name="max_energy_tokens"> </p>
+                      <p><label class="w3-center"> <i class="fab fa-bitcoin"></i> Power (KW) : </label>  <input id = "power_to_sell" class="post_editable_fields w3-right" style = "color: #244848; width: 80px;" class="w3-input w3-border" type="number" placeholder="Reserve Energy For Personal Use" value="1" name="max_energy_tokens"> </p>
                       
                       <p><label class="w3-center"> <i class="fab fa-bitcoin"></i> Min Threshold (KW) : </label>  <input class="post_editable_fields w3-right" style = "color: #244848; width: 80px;" class="w3-input w3-border" type="number" placeholder="Reserve Energy For Personal Use" value="1" name="max_energy_tokens"> </p>
                     
@@ -405,9 +436,11 @@ html {
                   <div class="w3-left"><i class="fab fa-bitcoin  w3-xxxlarge"></i></div>
                   <div class="w3-right">
                     <h4>99</h4>
+                    
                   </div>
                   <div class="w3-clear"></div>
                   <h4>Wallet</h4>
+                  
                 </div>
               </div>
 
@@ -798,6 +831,11 @@ html {
                                         $('.editable_fields').prop('disabled', function(i, v) { return !v; });
                                         $(".editable_fields").removeClass("w3-border");
                                       });
+
+
+
+
+
   </script>
 
 

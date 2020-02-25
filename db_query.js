@@ -76,7 +76,9 @@ async function sqlite_json_insert(json_dict,table_name) {
 
 
 async function check_login_and_load_certificates(user_name,user_password) {
-    let login_status ;
+    let login_status={};
+    login_status["status"]= "";
+    
     try {
         console.log("1");
         let db_con = await sqlite3_async.open(db_name);
@@ -88,6 +90,7 @@ async function check_login_and_load_certificates(user_name,user_password) {
         console.log("2");
         if (result.length > 0) {
             let user_info =result[0];
+            login_status['User_Id'] = user_info['User_Id'] ;
             if (user_info['User_Password'] === user_password) {
                 let enrollment_json = JSON.parse(user_info["User_Enrollment_Certificate"]);
                 let enrollment_signingIdentity = enrollment_json['enrollment']['signingIdentity'];
@@ -96,21 +99,21 @@ async function check_login_and_load_certificates(user_name,user_password) {
                 //console.log(user_info);
                 write_status =  await write_certificates_from_db_to_wallet(user_info,enrollment_signingIdentity);
                 console.log(write_status);
-                login_status = write_status;
+                login_status["status"] = write_status;
                 
                 console.log("4");
             }
             else {
-                login_status = "Password is wrong";
+                login_status["status"] = "Password is wrong";
             }
         }
         else {
-            login_status = "Account does not exist - Please register";
+            login_status["status"] = "Account does not exist - Please register";
         }
     }
     catch(e){
         console.log(e);
-        login_status = e;
+        login_status["status"] = e;
     }
     finally {
         console.log("5");

@@ -8,12 +8,12 @@ function openLink(evt, animName) {
     console.log(tablinks);
     for (i = 0; i < x.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" w3-blue", " ");
-      tablinks[i].className = tablinks[i].className.replace("w3-blue w3-blue", " ");
+      tablinks[i].className = tablinks[i].className.replace("w3-blue", " ");
     }
     document.getElementById(animName).style.display = "block";
     if(animName!="home") {
       console.log(animName);
-      evt.currentTarget.className += " w3-blue";
+      //evt.currentTarget.className += " w3-blue";
     }
   }
   

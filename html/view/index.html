@@ -39,23 +39,74 @@
     <a href="#" onclick="openLink(event, 'login_check')" style = "display: none;" class="login_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
     <a href="#" onclick="openLink(event, 'register_check')" style = "display: none;" class="register_button w3-bar-item w3-button w3-hover-blue tablink"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
     <a href="#" onclick="openLink(event, 'buy')" style = "display: none;" class="buy_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy</a>
-    <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;display: none;" class="invoke_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
-    <a  href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto; display: none;" class="query_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a>
+    <!-- <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;display: none;" class="invoke_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Invoke</a>
+    <a  href="#" onclick="document.getElementById('query_chain_code_div').style.display='block'" style="width:auto; display: none;" class="query_button w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-question-circle" aria-hidden="true"></i> Query</a> -->
 
 </div>
 
 <div id="notifications" class="w3-sidebar w3-bar-block w3-white w3-hide w3-animate-right" style="right:0;width: 300px;">
   <button onclick="notification_function()" class="w3-bar-item w3-button w3-large">Close &times;</button>
-  <a href="#" onclick="openLink(event, 'login')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-sign-in" aria-hidden="true"></i> Notification1</a>
-  <a href="#" onclick="openLink(event, 'register')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-user-plus" aria-hidden="true"></i> Notification2</a>
-  <a href="#" onclick="openLink(event, 'buy')" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-shopping-cart" aria-hidden="true"></i> Notification3</a>
-  <a href="#" onclick="document.getElementById('sell').style.display='block'" style="width:auto;" class="w3-bar-item w3-button w3-hover-blue tablink "><i class="fa fa-pencil" aria-hidden="true"></i> Notification4</a>
+  <div class="w3-card-4" style="width:100%;box-shadow: none !important;">
+    
+    <header class="w3-container">
+      <h3><img src="/images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> <span class="notificaton_user_name"> Demo User </span><i class="fa fa-window-close w3-right"></i></h3>
+    </header>
+    <div class="w3-container">
+      <p>
+        <label class="w3-left" id="from_user" for="from_user"><b>Has Purchased : </b></label>
+        <label class="w3-right" ><span class="not_purchased"> 50</span> kwh</label>
+      </p>
+      <br>
+      <p>
+        <span class="w3-right w3-opacity"><i class="far fa-clock" aria-hidden="true"></i> <span id="ad_posted_timestamp"> Sun Feb 16 2020 17:18:31 </span> </span>
+      </p>
+    </div>
+    <hr>
+  </div>
+
+  <div class="w3-card-4" style="width:100%;box-shadow: none !important;">
+    
+    <header class="w3-container">
+      <h3><img src="/images/avatar3.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> <span class="notificaton_user_name"> Anand </span><i class="fa fa-window-close w3-right"></i></h3>
+    </header>
+    <div class="w3-container">
+      <p>
+        <label class="w3-left" id="from_user" for="from_user"><b>Has Purchased : </b></label>
+        <label class="w3-right" ><span class="not_purchased"> 150</span> kwh</label>
+      </p>
+      <br>
+      <p>
+        <span class="w3-right w3-opacity"><i class="far fa-clock" aria-hidden="true"></i> <span id="ad_posted_timestamp"> Sun Feb 16 2020 17:18:31 </span> </span>
+      </p>
+    </div>
+    <hr>
+  </div>
+
+  <div class="w3-card-4" style="width:100%;box-shadow: none !important;">
+    
+    <header class="w3-container">
+      <h3><img src="/images/anand.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px"> <span class="notificaton_user_name"> Test User </span><i class="fa fa-window-close w3-right"></i></h3>
+    </header>
+    <div class="w3-container">
+      <p>
+        <label class="w3-left" id="from_user" for="from_user"><b>Has Purchased : </b></label>
+        <label class="w3-right" ><span class="not_purchased"> 30</span> kwh</label>
+      </p>
+      <br>
+      <p>
+        <span class="w3-right w3-opacity"><i class="far fa-clock" aria-hidden="true"></i> <span id="ad_posted_timestamp"> Sun Feb 16 2020 17:18:31 </span> </span>
+      </p>
+    </div>
+    <hr>
+  </div>
+
+
 
 </div>
 
 
 <div id="home" class="iframe_holder  "  style="background-color:white;display: none;">
-  <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+  <iframe src="my_profile.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
 
 <div id="my_profile" class="iframe_holder  "  style="background-color:white;display: none;">
@@ -98,7 +149,7 @@
 </div>
 
 <div id="buy" class="iframe_holder " style="display: none;"  >
-  <iframe src="home_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
+  <iframe src="buy_page.html" width=100% height=100% marginwidth=0 marginheight=0 frameborder=0 ></iframe>
 </div>
 
 <div id="login_check" class="iframe_holder " style="display: none;" >

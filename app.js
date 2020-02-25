@@ -63,7 +63,8 @@ app.post('/register', async (req, res) =>  {
     let register_status="success";
     let combined_user_data;
     let fabric_register_status;
-    let json_response = {}
+    let json_response = {};
+    
 
     try {
 
@@ -101,10 +102,21 @@ app.post('/',async (req,res) => {
       console.log(app_session);
       if(app_session.user_name && app_session.password) {
           console.log("session exists");
+
+          let user_assets = await get_user_assets_from_chaicode();
+          var user_assets_json = JSON.parse(user_assets['data']);
+          app_session.balance = user_assets_json['amount'];
+          //app_session.capacity = user_assets_json['size'];
+
           response = {
                     "status":"session active",
                     "user_name": app_session.user_name,
-                    "user_password" : app_session.password
+                    "user_password" : app_session.password,
+                    "wallet":app_session.balance,
+                    "address":app_session.address,
+                    "smart_meter_id" : app_session.smart_meter_id,
+                    "capacity": app_session.capacity
+
               };
           console.log(response);
           
@@ -156,14 +168,26 @@ app.post('/login', async (req, res) =>  {
     let user_name = html_json_data["Login_User_Name"];
     let user_password = html_json_data["Login_Password"];
     let login_status = await check_login_and_load_certificates(user_name,user_password);
-    if (login_status === "success") {
+    if (login_status["status"] === "success") {
         app_session = req.session;
         app_session.user_name = user_name;
         app_session.password = user_password;
+        app_session.user_id = login_status['User_Id'];
+
+        user_assets = await get_user_assets_from_chaicode();
+        var user_assets_json = JSON.parse(user_assets['data']);
+        app_session.balance = user_assets_json['amount'];
+        app_session.address = user_assets_json['color'];
+        app_session.smart_meter_id = user_assets_json['owner'];
+        app_session.capacity = user_assets_json['size'];
       }
     
+
+
+
     let response = {
-                    "status":login_status,
+                    "status":login_status["status"],
+                    "user_assets": user_assets
                };
     console.log(response);
     res.json(response);
@@ -174,16 +198,18 @@ app.post('/ad_submit', async (req, res) =>  {
 
     
     let response;
+    app_session = req.session;
     if(app_session.user_name && app_session.password) {
       
       let user_name = app_session.user_name;
   
       let html_json_data = req.body;
+      html_json_data["User_Capacity"] = app_session.capacity;
       // let post_timestamp = html_json_data["Posted_Timestamp"];
       // let energy_to_sell = html_json_data["Energy_To_Sell"];
       // let cost = html_json_data["Cost"];
       let session_info = {
-                            "User_Id" : 83
+                            "User_Id" : app_session.user_id
                           };
       let combined_user_data = {...html_json_data,...session_info};
       let insert_status = await sqlite_json_insert(combined_user_data,"Advertisement");
@@ -211,7 +237,7 @@ app.post('/sell', async (req, res) =>  {
 
     let CHAIN_CODE_NAME = req.body.Chain_Code_Name;
     let CHAIN_CODE_FUNCTION_NAME = req.body.Chain_Code_Function_Name;
-   
+    app_session = req.session;
     if(app_session.user_name && app_session.password) {
         let user_name = app_session.user_name;
         const CHANNEL_NAME  = "appchannel";
@@ -240,11 +266,101 @@ app.post('/sell', async (req, res) =>  {
     res.json(response);
   });
 
+
+  
+
+  app.post('/create_user_asset', async (req, res) =>  {
+    let response;
+
+    let user_name = req.body.User_Name;
+    let user_address = "4A Liveien, Hinna";
+    let user_capacity= "1200";
+    let smart_meter_id = req.body.User_Smart_Meter_Id;
+    let user_wallet = "1000";
+
+    let CHAIN_CODE_NAME = "energycccccc";
+    let CHAIN_CODE_FUNCTION_NAME = "initMarble";
+    app_session = req.session;
+    
+        //let user_name = app_session.user_name;
+        const CHANNEL_NAME  = "appchannel";
+        //const CHAIN_CODE_NAME = "carcc";
+        //const CHAIN_CODE_FUNCTION_NAME = "createCar";
+
+        let invoke_result = await invokechaincode(user_name, 
+                                                CHANNEL_NAME, 
+                                                CHAIN_CODE_NAME, 
+                                                CHAIN_CODE_FUNCTION_NAME,
+                                                user_name,user_address,user_capacity,smart_meter_id,user_wallet);
+
+        response = {
+                        "status":"success",
+                        "data":invoke_result
+                  };
+    
+    console.log(response);
+    res.json(response);
+  });
+
+
+  app.post('/buy_confirm_invoke_chaincode', async (req, res) =>  {
+    let response;
+    app_session = req.session;
+    let from_user_name = app_session.user_name;
+    let to_user_name = req.body.seller_user_input;
+    let amount= req.body.total_power_price_input;
+
+
+    let CHAIN_CODE_NAME = "energycccccc";
+    let CHAIN_CODE_FUNCTION_NAME = "buy_energy";
+   
+    if(app_session.user_name && app_session.password) {
+        let user_name = app_session.user_name;
+        const CHANNEL_NAME  = "appchannel";
+        //const CHAIN_CODE_NAME = "carcc";
+        //const CHAIN_CODE_FUNCTION_NAME = "createCar";
+
+        let invoke_result = await invokechaincode(user_name, 
+                                                CHANNEL_NAME, 
+                                                CHAIN_CODE_NAME, 
+                                                CHAIN_CODE_FUNCTION_NAME,
+                                                from_user_name,to_user_name,amount);
+
+        let user_assets = await get_user_assets_from_chaicode();
+        var user_assets_json = JSON.parse(user_assets['data']);
+        app_session = req.session;
+        app_session.balance = user_assets_json['amount'];
+        //app_session.address = user_assets_json['color'];
+        //app_session.smart_meter_id = user_assets_json['owner'];
+        app_session.capacity = user_assets_json['size'];
+
+        console.log("after buy");
+        console.log(app_session);
+
+        response = {
+                        "status":"success",
+                        "data":invoke_result,
+                        "user_balance" :app_session.balance,
+                        "user_capacity" : app_session.capacity
+                  };
+      }
+    else {
+          response = {
+                      "status":"Failed",
+                      "data":"Session Expired - Please Login"
+                    };
+    }
+    console.log(response);
+    res.json(response);
+  });
+
+
+
 app.post('/query_chain_code', async (req, res) =>  {
     let response;
     let CHAIN_CODE_NAME = req.body.Chain_Code_Name;
     let CHAIN_CODE_FUNCTION_NAME = req.body.Chain_Code_Function_Name;
-   
+    app_session = req.session;
     if(app_session.user_name && app_session.password) {
       
       let user_name = app_session.user_name;
@@ -274,14 +390,48 @@ app.post('/query_chain_code', async (req, res) =>  {
     res.json(response);
   });
 
+ async function get_user_assets_from_chaicode() {
+      let response;
+      let CHAIN_CODE_NAME = "energycccccc";
+      let CHAIN_CODE_FUNCTION_NAME = "readMarble";
+      //app_session = req.session;
+      if(app_session.user_name && app_session.password) {
+        
+        let user_name = app_session.user_name;
+        let CHANNEL_NAME  = "appchannel";
+        //let CHAIN_CODE_NAME = "carcc";
+        //let CHAIN_CODE_FUNCTION_NAME = "listCars";
+
+        let query_result = await querychaincode(user_name,
+                                                CHANNEL_NAME,
+                                                CHAIN_CODE_NAME, 
+                                                CHAIN_CODE_FUNCTION_NAME,
+                                                user_name);
+        
+        response = {
+                        "status":"success",
+                        "data":query_result
+                  };
+      }
+      else {
+            response = {
+                        "status":"Failed",
+                        "data":"Session Expired - Please Login"
+                      };
+      }
+
+      return response;
+      //console.log(response);
+      //res.json(response);
+  }
 
   app.post('/buy_ad_loader', async (req, res) =>  {
     let response;
-    
+    app_session = req.session;
     if(app_session.user_name && app_session.password) {
       
      
-      let sql_query = "SELECT Advertisement.*, User.User_Name, User.User_Image,User.User_Profile_Rating,User.Accumulated_Generated_Power  FROM Advertisement JOIN User USING(User_Id)";
+      let sql_query = "SELECT Advertisement.*, User.User_Name, User.User_Image,User.User_Profile_Rating,User.Accumulated_Generated_Power  FROM Advertisement JOIN User USING(User_Id) order by(Advertisement.Posted_Timestamp) desc";
       let db_query_result = await db_query(sql_query);
       
       response = {
